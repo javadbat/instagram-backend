@@ -7,7 +7,6 @@
   "scripts": {
     "serve": "node index.js"
   },
-
   "author": "",
   "license": "ISC",
   "dependencies": {

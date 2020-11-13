@@ -1,6 +1,6 @@
 import IPA from 'instagram-private-api';
 import { credential } from './constant/credential.js';
-const { IgApiClient } = IPA;
+const { IgApiClient  } = IPA;
 export class InstagramClient {
     constructor() {
         this.instagram = new IgApiClient();
@@ -13,6 +13,9 @@ export class InstagramClient {
             Promise.all([userPromise]).then(([user])=>{
                 this.user = user
                 resolve();
+            });
+            userPromise.catch((err)=>{
+                console.error(err);
             })
         })
         
@@ -30,6 +33,8 @@ export class InstagramClient {
                     reject(err);
                     console.error(err);
                 })
+            }).catch((err)=>{
+                console.error(err);
             });
         })
         
