@@ -35,7 +35,7 @@ export class PostService{
     }
     async getComments(postId){
         return new Promise((resolve, reject) => {
-            this.ic.instagram.media.mediaComments(postId).then((comments)=>{
+            this.ic.instagram.feed.mediaComments(postId).items().then((comments)=>{
                 resolve(comments);
             }).catch((err)=>{
                 console.error(err);
