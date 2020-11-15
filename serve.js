@@ -3,6 +3,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { PostModule } from './src/post/post-module.js';
 import { InstagramClient } from './src/instagram-client.js';
+import { StoryModule } from './src/story/story-module.js';
 class InstagramServer{
     constructor(port){
         this.app = new express();
@@ -14,6 +15,7 @@ class InstagramServer{
         const icProm = this.instagramClient.init();
         Promise.all([icProm]).then(()=>{
             this.registerModule("postModule", PostModule);
+            this.registerModule("storyModule", StoryModule);
             this.app.listen(port,()=>{
                 console.log(`mock service Rest running on http://localhost:${port}/`);
             });
